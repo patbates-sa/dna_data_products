@@ -1,0 +1,27 @@
+version: 2
+
+groups:
+  - name: sales
+    owner:
+      name: Sales Team
+      email: sales@acme.co
+      
+models:
+  - name: ad_spend_per_adv
+    config:
+      contract:
+        enforced: true
+    description: Total spend per advertiser
+    columns:
+      - name: advertiser_id
+        data_type: int
+        description: Primary key for the table
+        tests:
+          - unique
+          - not_null
+      - name: total_ad_spend
+        data_type: int
+      - name: user_id
+        data_type: int
+
+

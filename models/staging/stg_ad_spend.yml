@@ -1,0 +1,8 @@
+models:
+  - name: stg_ad_spend
+    description: This model extracts and organizes advertising spend data for each advertiser, providing a foundational dataset for analyzing advertising expenses.
+    columns:
+      - name: advertiser_id
+        description: A unique identifier for each advertiser.
+      - name: spend
+        description: The total amount of money spent on advertising by the advertiser.
