@@ -8,6 +8,7 @@ groups:
       
 models:
   - name: ad_spend_per_adv
+    access: public
     config:
       contract:
         enforced: true
