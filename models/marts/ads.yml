@@ -2,27 +2,40 @@ version: 2
 
 groups:
   - name: sales
+    description: Models owned by the Sales team for advertising and revenue analytics
     owner:
       name: Sales Team
       email: sales@acme.co
-      
+
 models:
   - name: ad_spend_per_adv
-    access: public
+    description: >
+      Aggregated advertising spend by advertiser. This mart provides a single row per advertiser
+      with their total advertising spend, enabling analysis of advertiser investment levels
+      and identification of top spenders.
     config:
+      materialized: table
+      group: sales
       contract:
         enforced: true
-    description: Total spend per advertiser
     columns:
       - name: advertiser_id
         data_type: int
-        description: Primary key for the table
-        tests:
+        description: >
+          Unique identifier for the advertiser. Primary key for this table,
+          inherited from the staging layer.
+        data_tests:
           - unique
           - not_null
-      - name: total_ad_spend
-        data_type: int
       - name: user_id
         data_type: int
-
-
+        description: >
+          User identifier associated with the advertiser. Set to 1 for the first advertiser
+          by ID ordering, null for all others. Used for specific business logic requirements.
+      - name: total_ad_spend
+        data_type: int
+        description: >
+          Sum of all advertising spend for the advertiser. Aggregated from individual
+          spend records in the staging layer.
+        data_tests:
+          - not_null

@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: agg_customer_returns
+    description: >
+      Customer-level aggregation of return activity. This model summarizes return behavior
+      by customer, showing total returned orders and the monetary value of those returns.
+      Useful for identifying customers with high return rates and analyzing return patterns.
+    config:
+      materialized: table
+      group: sales
+    columns:
+      - name: customer_key
+        description: >
+          Unique identifier for the customer. Primary key for this table,
+          sourced from the data_engineering.fct_order_items model.
+        data_tests:
+          - unique
+          - not_null
+      - name: total_orders
+        description: >
+          Count of distinct orders that contained returned items for this customer.
+          Represents the number of separate order transactions with returns.
+        data_tests:
+          - not_null
+      - name: total_sales_amount
+        description: >
+          Sum of gross item sales amounts for all returned items by this customer.
+          Represents the total monetary value of returns.
+        data_tests:
+          - not_null
+
