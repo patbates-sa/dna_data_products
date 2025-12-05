@@ -1,0 +1,6 @@
+# Code owners for this repository
+# These users will be automatically requested for review on PRs
+
+# Assign Miles Freeborn and Joao as code owners for all files
+* @mfreeborndbt @joaoclemencio-dbtlabs
+
