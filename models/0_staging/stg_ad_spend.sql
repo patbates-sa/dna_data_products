@@ -9,3 +9,4 @@ select
     , spend
 from {{ source('ads', 'ad_spend') }}
 
+

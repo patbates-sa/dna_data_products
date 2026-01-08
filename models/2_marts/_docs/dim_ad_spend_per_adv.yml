@@ -1,18 +1,13 @@
-version: 2
-
-groups:
-  - name: sales
-    description: Models owned by the Sales team for advertising and revenue analytics
-    owner:
-      name: Sales Team
-      email: sales@acme.co
+# Documentation for ad_spend_per_adv model
+# Aggregated advertising spend by advertiser
 
 models:
-  - name: ad_spend_per_adv
+  - name: dim_ad_spend_per_adv
     description: >
       Aggregated advertising spend by advertiser. This mart provides a single row per advertiser
       with their total advertising spend, enabling analysis of advertiser investment levels
-      and identification of top spenders.
+      and identification of top spenders. Includes a user_id assignment for the first advertiser
+      to support specific business logic requirements.
     config:
       materialized: table
       group: sales

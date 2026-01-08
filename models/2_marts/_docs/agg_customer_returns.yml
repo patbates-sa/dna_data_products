@@ -1,4 +1,5 @@
-version: 2
+# Documentation for agg_customer_returns model
+# Customer-level return activity aggregation
 
 models:
   - name: agg_customer_returns
@@ -6,6 +7,7 @@ models:
       Customer-level aggregation of return activity. This model summarizes return behavior
       by customer, showing total returned orders and the monetary value of those returns.
       Useful for identifying customers with high return rates and analyzing return patterns.
+      Limited to top 100 customers by customer_key for performance.
     config:
       materialized: table
       group: sales

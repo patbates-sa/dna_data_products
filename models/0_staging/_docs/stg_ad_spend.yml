@@ -1,10 +1,12 @@
-version: 2
+# Documentation for stg_ad_spend model
+# Staging layer for advertising spend data
 
 models:
   - name: stg_ad_spend
     description: >
       Staging model that extracts and standardizes advertising spend data from the raw ads source.
-      This model serves as the foundation for downstream advertising analytics and reporting.
+      This model serves as the foundation for downstream advertising analytics and reporting,
+      renaming the raw id field to advertiser_id for clarity.
     config:
       materialized: table
     columns:
@@ -13,6 +15,7 @@ models:
         data_tests:
           - not_null
       - name: spend
-        description: The total amount of money spent on advertising by the advertiser
+        description: The amount of money spent on advertising by the advertiser in a single transaction
         data_tests:
           - not_null
+
