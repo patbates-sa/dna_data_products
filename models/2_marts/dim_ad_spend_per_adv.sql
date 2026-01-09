@@ -15,3 +15,4 @@ select
     sum(spend) as total_ad_spend
 from ad_spend
 group by advertiser_id
+

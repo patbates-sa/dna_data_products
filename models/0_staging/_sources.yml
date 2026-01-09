@@ -1,4 +1,5 @@
-version: 2
+# Source definitions for the sales project
+# This file defines raw advertising data sources
 
 sources:
   - name: ads
@@ -16,3 +17,4 @@ sources:
         config:
           freshness:
             warn_after: {count: 365, period: day}
+
