@@ -1,0 +1,6 @@
+packages:
+- git: https://github.com/dbt-labs/sa_demo_shared_package_for_common_tests.git
+  name: acme_common
+  revision: 9bcf4484bd003933d575d2b39b62fb8b558d8003
+  __unrendered__: {}
+sha1_hash: dc4b2ac57b4968f05c231f2232333bf88253b4a6
