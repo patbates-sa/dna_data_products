@@ -6,6 +6,9 @@
       "env": {
         "DBT_HOST": "https://tr995.us1.dbt.com/"
       }
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/"
     }
   }
 }
