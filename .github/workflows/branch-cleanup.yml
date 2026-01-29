@@ -36,11 +36,11 @@ on:
 
 jobs:
   cleanup:
+    permissions:
+      contents: write
+      pull-requests: write
     uses: dbt-labs/sa-demo-terraform/.github/workflows/branch-cleanup.yml@main
     with:
       days_old: ${{ inputs.days_old || 7 }}
       # UAT branch is already protected by default in the reusable workflow
       dry_run: ${{ inputs.dry_run || false }}
-    permissions:
-      contents: write
-      pull-requests: write
