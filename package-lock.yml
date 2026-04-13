@@ -1,0 +1,5 @@
+packages:
+- package: get-select/dbt_snowflake_query_tags
+  name: dbt_snowflake_query_tags
+  version: 2.6.0
+sha1_hash: 777cb302dfbbc5525ed6493fcb4739d605169696

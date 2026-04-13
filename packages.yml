@@ -1,0 +1,3 @@
+packages:
+  - package: get-select/dbt_snowflake_query_tags
+    version: 2.6.0
