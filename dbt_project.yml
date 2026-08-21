@@ -1,13 +1,9 @@
 # Name of the project and initial config info
 name: "da_sales"
 version: "1.0.0"
-dbt-cloud:
-  project-id: 70437463662273
-  defer-env-id: 70437463666050 # UAT/Staging environment
-config-version: 2
 
 # This profile is only used by ./dbt/profiles.yml when running locally, not relevant for cloud runs.
-profile: "tr995_us1_70437463662273"
+profile: "da_sales"
 
 vars:
   mesh_products_project: dna_data_products
