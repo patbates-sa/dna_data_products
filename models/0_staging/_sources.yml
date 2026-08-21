@@ -4,7 +4,7 @@
 sources:
   - name: ads
     description: Raw advertising data from the ads platform
-    database: SOURCE_DATA
+    database: RAW
     schema: ADS
     tables:
       - name: ad_spend
