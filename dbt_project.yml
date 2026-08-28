@@ -6,8 +6,8 @@ version: "1.0.0"
 profile: "da_sales"
 
 vars:
-  mesh_products_project: dna_data_products
-  mesh_domain_project: dna_data_domain
+  mesh_products_project: da_sales
+  mesh_domain_project: data_engineering
 
 
 # dbt_snowflake_query_tags: enables query tagging and comments for Snowflake query observability.
@@ -22,6 +22,9 @@ dispatch:
 query-comment:
   comment: '{{ dbt_snowflake_query_tags.get_query_comment(node) }}'
   append: true  # Snowflake removes prefixed comments
+
+on-run-start:
+  - "{{ validate_mesh(selected_only=false, require_products_model=true) }}"
 
 # These configurations specify where dbt should look for different types of files.
 model-paths: ["models"]
