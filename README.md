@@ -44,3 +44,19 @@ dbt debug
 ```
 
 You should see "All checks passed!" if everything is configured correctly.
+
+## Mesh validation
+
+This project provides two complementary ways to validate dbt Mesh conventions: the `validate_mesh` macro and dbt Wizard's validation workflow.
+
+### Validation workflows
+
+| Workflow | What it does |
+|---|---|
+| dbt Wizard validation | Runs the appropriate validation workflow, reports Mesh violations, and can help investigate or remediate them. |
+| `dbt build --select ...` | Runs the `on-run-start` hook against the resources selected by the command. A violation fails the build before the selected resources run. |
+| `dbt build` with no selector | Runs the hook against the normal full-project selection. A violation fails the build. |
+| `dbt run-operation validate_mesh` | Runs the macro directly. Use `selected_only: false` for a full-graph audit, or pass an explicit `selected_ids` list for selected-resource validation. |
+
+### Using the macro directly
+
