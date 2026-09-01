@@ -1,0 +1,60 @@
+# Documentation for stg_dim_customers model
+# Staging passthrough of the shared customer dimension
+
+models:
+  - name: stg_dim_customers
+    description: >
+      Staging model that exposes the shared customer dimension from
+      `dna_data_domain.dim_customers` version 1 to this project's DAG.
+      It preserves the upstream customer grain and standardized customer attributes
+      for downstream product models and reporting.
+    columns:
+      - name: customer_key
+        description: Unique identifier for the customer dimension record.
+        data_tests:
+          - unique
+          - not_null
+      - name: region
+        description: Geographic region associated with the customer.
+        data_tests:
+          - not_null
+      - name: name
+        description: Customer name as provided by the shared domain dimension.
+        data_tests:
+          - not_null
+      - name: address
+        description: Customer mailing address.
+      - name: nation
+        description: Country associated with the customer.
+        data_tests:
+          - not_null
+      - name: phone_number
+        description: Customer phone number.
+        data_tests:
+          - not_null
+      - name: account_balance
+        description: Current account balance recorded for the customer.
+      - name: market_segment
+        description: Customer market segment used for commercial analysis.
+      - name: lifetime_value
+        description: Estimated lifetime value attributed to the customer.
+      - name: tier_name
+        description: Customer tier classification derived from lifetime value.
+      - name: is_high_value
+        description: Flag indicating whether the customer is classified as high value.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Y', 'N']
+      - name: is_mid_value
+        description: Flag indicating whether the customer is classified as mid value.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Y', 'N']
+      - name: is_low_value
+        description: Flag indicating whether the customer is classified as low value.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Y', 'N']
