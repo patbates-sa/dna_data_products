@@ -1,0 +1,25 @@
+# Documentation for cost_per_engaged_user model
+# Marketing efficiency metric joining engagement with ad spend
+
+models:
+  - name: agg_cost_per_engaged_user
+    description: >
+      Cost per engaged user analysis joining engagement data with advertising spend.
+      This model calculates marketing efficiency by dividing total ad spend by
+      engagement score for each user. Enables identification of high-value users
+      and optimization of marketing spend allocation.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier linking engagement to advertising data
+        data_tests:
+          - unique
+          - not_null
+      - name: total_engagement
+        description: Sum of all engagement activity for the user from the intermediate layer
+      - name: total_ad_spend
+        description: Total advertising spend for the user from the sales dim_ad_spend_per_adv model
+      - name: cost_per_engaged_user
+        description: >
+          Calculated cost efficiency metric (ad spend / engagement).
+          Lower values indicate more cost-effective user acquisition.
+          Returns null if engagement is zero to avoid division errors.

@@ -1,0 +1,17 @@
+# Documentation for int_engaged_users model
+# Intermediate aggregation of user engagement
+
+models:
+  - name: int_engaged_users
+    description: >
+      Intermediate model aggregating user engagement by user. Combines all engagement
+      activity for each user into a total_engagement score, providing a single row
+      per user for downstream joins with advertising data.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier
+        data_tests:
+          - unique
+          - not_null
+      - name: total_engagement
+        description: Sum of all engagement activity for the user across all tracked interactions

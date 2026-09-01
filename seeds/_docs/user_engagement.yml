@@ -1,0 +1,17 @@
+# Documentation for user_engagement seed
+# Website user engagement activity data
+
+seeds:
+  - name: user_engagement
+    description: >
+      User engagement seed data from website activity tracking. Contains engagement
+      scores per user that measure interaction levels with marketing content.
+      Used in the staging layer to build user engagement analytics and calculate
+      cost per engaged user metrics.
+    columns:
+      - name: user_id
+        description: Unique identifier for the user, serves as primary key
+      - name: engagement
+        description: >
+          Numeric engagement score representing the user's interaction level.
+          Higher values indicate more active engagement with marketing content.

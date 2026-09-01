@@ -1,0 +1,30 @@
+# Documentation for agg_campaign_customer_contacts model
+# Campaign to customer matching based on tier
+
+models:
+  - name: agg_campaign_customer_contacts
+    description: >
+      Aggregated view of campaign-to-customer contacts based on tier matching.
+      This model joins campaigns with customers where tier_name matches, creating
+      a contact list for targeted marketing outreach. Enables campaign owners to
+      identify which customers should be contacted for each campaign tier.
+    columns:
+      - name: contact_key
+        description: Surrogate primary key (campaign_key + '-' + email_address) uniquely identifying each contact
+        data_tests:
+          - unique
+          - not_null
+      - name: campaign_name
+        description: Name of the marketing campaign for this contact
+      - name: campaign_owner
+        description: Owner responsible for the campaign execution
+      - name: customer_name
+        description: Name of the customer to be contacted
+      - name: customer_region
+        description: Geographic region of the customer for regional targeting
+      - name: tier_name
+        description: Tier classification linking the campaign to the customer
+      - name: email_address
+        description: Customer email address for contact (sourced from customer address field)
+      - name: phone_number
+        description: Customer phone number for alternative contact method

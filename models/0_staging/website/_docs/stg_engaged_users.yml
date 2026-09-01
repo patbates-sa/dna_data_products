@@ -1,0 +1,17 @@
+# Documentation for stg_engaged_users model
+# Staging layer for user engagement website data
+
+models:
+  - name: stg_engaged_users
+    description: >
+      Staged user engagement data from website activity. This model serves as a
+      pass-through from the user_engagement seed, exposing engagement scores
+      for downstream aggregation and analysis.
+    columns:
+      - name: user_id
+        description: Primary key - unique user identifier from the engagement tracking system
+        data_tests:
+          - unique
+          - not_null
+      - name: engagement
+        description: Raw user engagement score from website activity tracking

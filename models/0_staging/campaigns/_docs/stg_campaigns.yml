@@ -1,0 +1,25 @@
+# Documentation for stg_campaigns model
+# Staging layer for campaign data with surrogate key generation
+
+models:
+  - name: stg_campaigns
+    description: >
+      Staged campaign data with campaign details and tier information.
+      This model generates a surrogate campaign_key by concatenating id and seq,
+      providing a unique identifier for each campaign-tier combination.
+    columns:
+      - name: campaign_key
+        description: Surrogate primary key (id + '-' + seq) uniquely identifying each campaign-tier combination
+        data_tests:
+          - unique
+          - not_null
+      - name: id
+        description: Original campaign identifier from the seed data
+      - name: seq
+        description: Sequence number for campaign tiers, indicating which tier level this record represents
+      - name: name
+        description: Human-readable campaign name
+      - name: tier_name
+        description: Campaign tier classification (tier1, tier2, etc.) for customer matching
+      - name: owner
+        description: Name of the campaign owner responsible for execution
