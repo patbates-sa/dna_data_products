@@ -7,7 +7,7 @@ models:
       Customer-level aggregation of return activity. This model summarizes return behavior
       by customer, showing total returned orders and the monetary value of those returns.
       Useful for identifying customers with high return rates and analyzing return patterns.
-      Limited to top 100 customers by customer_key for performance.
+      Sourced through `stg_fct_order_items`, which exposes `dna_data_domain.fct_order_items`.
     config:
       materialized: table
       group: sales
@@ -15,7 +15,7 @@ models:
       - name: customer_key
         description: >
           Unique identifier for the customer. Primary key for this table,
-          sourced from the dna_data_domain.fct_order_items model.
+          sourced from the `stg_fct_order_items` staging model.
         data_tests:
           - unique
           - not_null
@@ -31,4 +31,3 @@ models:
           Represents the total monetary value of returns.
         data_tests:
           - not_null
-
