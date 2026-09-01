@@ -1,0 +1,25 @@
+# Documentation for campaigns seed
+# Marketing campaign data with tier classifications
+
+seeds:
+  - name: campaigns
+    description: >
+      Marketing campaigns seed data containing campaign information with tier classifications.
+      Each campaign can have multiple tiers (represented by SEQ), allowing targeted outreach
+      to different customer segments. Used to drive the dim_campaigns model and
+      campaign-to-customer matching logic.
+    columns:
+      - name: ID
+        description: Unique identifier for the campaign
+      - name: SEQ
+        description: >
+          Sequence number representing the tier level within a campaign.
+          A campaign can target multiple tiers (1, 2, 3, 4) for different customer segments.
+      - name: NAME
+        description: Human-readable name of the marketing campaign (e.g., Cab-outreach, Webinar-dbtMesh)
+      - name: TIER_NAME
+        description: >
+          Tier classification label (tier1, tier2, tier3, tier4) used to match campaigns
+          with customers of corresponding tiers.
+      - name: OWNER
+        description: Name of the campaign owner responsible for the campaign execution

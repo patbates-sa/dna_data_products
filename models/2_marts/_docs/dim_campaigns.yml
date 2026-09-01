@@ -1,0 +1,25 @@
+# Documentation for dim_campaigns model
+# Campaign dimension table
+
+models:
+  - name: dim_campaigns
+    description: >
+      Campaign dimension table containing campaign attributes and tier details.
+      Provides a clean interface for campaign data, passing through staged campaign
+      information for use in downstream analytics and campaign-customer matching.
+    columns:
+      - name: campaign_key
+        description: Surrogate primary key (id + '-' + seq) uniquely identifying each campaign-tier combination
+        data_tests:
+          - unique
+          - not_null
+      - name: id
+        description: Original campaign identifier
+      - name: seq
+        description: Sequence number for campaign tiers
+      - name: name
+        description: Human-readable campaign name
+      - name: tier_name
+        description: Campaign tier classification for customer matching
+      - name: owner
+        description: Name of the campaign owner responsible for execution
