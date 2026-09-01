@@ -1,0 +1,88 @@
+# Documentation for stg_fct_order_items model
+# Staging passthrough of the shared order items fact
+
+models:
+  - name: stg_fct_order_items
+    description: >
+      Staging model that exposes the shared order item fact from
+      `dna_data_domain.fct_order_items` version 1 to this project's DAG.
+      It preserves the upstream order item grain and standardized measures
+      for downstream product models and reporting.
+    columns:
+      - name: order_item_key
+        description: Unique identifier for the order item fact row.
+        data_tests:
+          - unique
+          - not_null
+      - name: order_key
+        description: Identifier for the parent order.
+        data_tests:
+          - not_null
+      - name: order_date
+        description: Calendar date when the order was placed.
+        data_tests:
+          - not_null
+      - name: customer_key
+        description: Identifier for the customer associated with the order item.
+        data_tests:
+          - not_null
+      - name: part_key
+        description: Identifier for the ordered part.
+        data_tests:
+          - not_null
+      - name: supplier_key
+        description: Identifier for the supplier fulfilling the order item.
+        data_tests:
+          - not_null
+      - name: order_item_status_code
+        description: Status code assigned to the order item.
+      - name: is_return
+        description: Flag indicating whether the order item was returned.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [true, false]
+      - name: line_number
+        description: Line number of the item within the order.
+        data_tests:
+          - not_null
+      - name: ship_date
+        description: Date the order item shipped.
+      - name: commit_date
+        description: Promised commit date for the order item.
+      - name: receipt_date
+        description: Date the customer received the order item.
+      - name: ship_mode
+        description: Shipping method used for the order item.
+      - name: supplier_cost
+        description: Supplier-side cost attributed to the order item.
+      - name: base_price
+        description: Base price before discounts and taxes.
+      - name: discount_percentage
+        description: Discount percentage applied to the order item.
+      - name: discounted_price
+        description: Price after discount and before tax.
+      - name: tax_rate
+        description: Tax rate applied to the order item.
+      - name: nation_key
+        description: Identifier for the nation associated with the order item.
+      - name: order_item_count
+        description: Count contribution for the order item row.
+      - name: quantity
+        description: Quantity ordered on the order item line.
+        data_tests:
+          - not_null
+      - name: gross_item_sales_amount
+        description: Gross sales amount for the order item before discounts and taxes.
+        data_tests:
+          - not_null
+      - name: discounted_item_sales_amount
+        description: Sales amount after discounts and before taxes.
+      - name: item_discount_amount
+        description: Absolute discount amount applied to the order item.
+      - name: item_tax_amount
+        description: Tax amount applied to the order item.
+      - name: net_item_sales_amount
+        description: Net sales amount after discounts and taxes.
+        data_tests:
+          - not_null

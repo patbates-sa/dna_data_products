@@ -195,13 +195,16 @@
 
     {% if violations | length > 0 %}
 
-        {% for violation in violations %}
-            {{ log('MESH VIOLATION: ' ~ violation, info=true) }}
-        {% endfor %}
+        {% set violation_message = (
+            violations | length
+            ~ ' dbt Mesh violation(s) found:\n- '
+            ~ (violations | join('\n- '))
+        ) %}
+
+        {{ log(violation_message, info=true) }}
 
         {{ exceptions.raise_compiler_error(
-            violations | length
-            ~ ' dbt Mesh violation(s) found'
+            violation_message
         ) }}
 
     {% else %}
