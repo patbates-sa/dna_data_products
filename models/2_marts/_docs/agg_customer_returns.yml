@@ -15,7 +15,7 @@ models:
       - name: customer_key
         description: >
           Unique identifier for the customer. Primary key for this table,
-          sourced from the data_engineering.fct_order_items model.
+          sourced from the dna_data_domain.fct_order_items model.
         data_tests:
           - unique
           - not_null
