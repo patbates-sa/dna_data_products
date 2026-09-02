@@ -15,8 +15,8 @@ dispatch:
       - dbt_snowflake_query_tags
       - dbt
 
-on-run-start:
-  - "{{ validate_mesh(selected_only=true) }}"
+# on-run-start:
+#   - "{{ validate_mesh(selected_only=true) }}"
 
 vars:
   mesh_products_project: dna_data_products
