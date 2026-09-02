@@ -5,8 +5,8 @@ with source as (
 
 final as (
     select
-        order_item_key,
-        order_key,
+        -- order_item_key,
+        -- order_key,
         order_date,
         customer_key,
         part_key,
