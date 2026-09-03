@@ -1,0 +1,86 @@
+# Documentation for agg_customer_segment_insights model
+# Reporting-ready customer mix and value metrics by region and market segment
+
+models:
+  - name: agg_customer_segment_insights
+    description: >
+      Reporting mart with one row per `region` and `market_segment`, built from
+      `int_customer_insights`. It summarizes customer volume, value-tier mix,
+      lifetime value coverage, and account balance metrics for segment-level
+      reporting. Customers without a lifetime value remain visible through the
+      coverage metrics so incomplete valuation data is not mistaken for a true
+      low-value cohort.
+    columns:
+      - name: segment_key
+        description: Surrogate key for the reporting segment formed from `region` and `market_segment`.
+        data_tests:
+          - unique
+          - not_null
+      - name: region
+        description: Customer region represented by this reporting segment.
+        data_tests:
+          - not_null
+      - name: market_segment
+        description: Customer market segment represented by this reporting row.
+        data_tests:
+          - not_null
+      - name: customer_count
+        description: Total number of customers in the region and market segment.
+        data_tests:
+          - not_null
+      - name: customers_with_lifetime_value_count
+        description: Number of customers in the segment with a non-null lifetime value.
+        data_tests:
+          - not_null
+      - name: customers_without_lifetime_value_count
+        description: Number of customers in the segment missing lifetime value and excluded from tier assignment.
+        data_tests:
+          - not_null
+      - name: high_value_customer_count
+        description: Number of customers in the segment flagged as high value.
+        data_tests:
+          - not_null
+      - name: mid_value_customer_count
+        description: Number of customers in the segment flagged as mid value.
+        data_tests:
+          - not_null
+      - name: low_value_customer_count
+        description: Number of customers in the segment flagged as low value.
+        data_tests:
+          - not_null
+      - name: total_account_balance
+        description: Sum of customer account balances across the reporting segment.
+        data_tests:
+          - not_null
+      - name: avg_account_balance
+        description: Average customer account balance across the reporting segment.
+        data_tests:
+          - not_null
+      - name: total_lifetime_value
+        description: Sum of non-null customer lifetime value across the reporting segment, defaulting to 0 when no lifetime values are available.
+        data_tests:
+          - not_null
+      - name: avg_lifetime_value
+        description: Average lifetime value for customers in the segment with a non-null lifetime value.
+      - name: avg_value_quotient
+        description: Average ratio of account balance to lifetime value for customers with a calculable `value_quotient`.
+      - name: pct_customers_with_lifetime_value
+        description: Share of customers in the segment with a non-null lifetime value.
+        data_tests:
+          - not_null
+      - name: pct_customers_without_lifetime_value
+        description: Share of customers in the segment missing lifetime value.
+        data_tests:
+          - not_null
+      - name: pct_high_value_customers
+        description: Share of customers in the segment flagged as high value.
+        data_tests:
+          - not_null
+      - name: pct_mid_value_customers
+        description: Share of customers in the segment flagged as mid value.
+        data_tests:
+          - not_null
+      - name: pct_low_value_customers
+        description: Share of customers in the segment flagged as low value.
+        data_tests:
+          - not_null
