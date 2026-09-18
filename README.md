@@ -1,4 +1,4 @@
-# Optimum Demo - Hub Project - dna_data_products
+# Optimum Hub/Spoke Demo - Spoke Project - dna_data_products
 
 Customized from the standard SA Demo 2.0 for dbt Platform
 
